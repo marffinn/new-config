@@ -20,7 +20,7 @@ export const c_modele = [
     },
     {
         name: 'LFH TZ',
-        hef: { A: 40, B: 40, C: 40, D: 40, E: 40 },
+        hef: { A: 30, B: 40, C: 40, D: 40, E: 40 },
         categories: ['A', 'B', 'D'],
         availableLengths: [120, 140, 160, 180, 200, 220, 240, 260],
         material: 'polietylen HDPE',
@@ -29,7 +29,7 @@ export const c_modele = [
     },
     {
         name: 'LEH TN',
-        hef: { A: 40, B: 40, C: 40, D: 40, E: 40 },
+        hef: { A: 30, B: 40, C: 40, D: 40, E: 40 },
         categories: ['A', 'B', 'D'],
         availableLengths: [120, 140, 160, 180, 200, 220, 240, 260],
         material: 'polietylen HDPE',
@@ -38,7 +38,7 @@ export const c_modele = [
     },
     {
         name: 'LFH GZN',
-        hef: { A: 40, B: 40, C: 40, D: 40, E: 40 },
+        hef: { A: 30, B: 40, C: 40, D: 40, E: 40 },
         categories: ['A', 'B', 'D'],
         availableLengths: [90, 100, 120, 140, 160, 180, 200, 220, 240, 260],
         material: 'polietylen HDPE',
@@ -47,7 +47,7 @@ export const c_modele = [
     },
     {
         name: 'LDK GZN',
-        hef: { A: 40, B: 40, C: 40, D: 40, E: 40 },
+        hef: { A: 25, B: 40, C: 40, D: 40, E: 40 },
         categories: ['C', 'D', 'E'],
         availableLengths: [80, 100, 120, 140, 160, 180, 200, 220, 240, 260, 280, 300],
         material: 'polipropylen',
@@ -56,7 +56,7 @@ export const c_modele = [
     },
     {
         name: 'LXK 10 H',
-        hef: { A: 60, B: 60, C: 60, D: 60, E: 60 },
+        hef: { A: 50, B: 60, C: 60, D: 60, E: 60 },
         categories: ['A', 'B', 'C', 'D', 'E'],
         availableLengths: [160, 180, 200, 220, 240, 260],
         material: 'polipropylen',
