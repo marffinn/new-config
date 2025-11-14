@@ -1,0 +1,263 @@
+/* ────────────────────────────────────────────────────────────────
+   KONFIGIURATOR – container & steps
+   ──────────────────────────────────────────────────────────────── */
+container {
+    display: block;
+    max-width: 520px;
+    margin: 2rem auto;
+    padding: 1.5rem;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, .08);
+    font-family: 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+}
+
+/* Title */
+container>h3 {
+    margin: 0 0 1.5rem;
+    font-weight: 500;
+    font-size: 1.75rem;
+    text-align: center;
+    color: #1976d2;
+}
+
+/* Each section */
+.steps .section {
+    margin-bottom: 1.4rem;
+}
+
+/* Labels */
+.steps .section>label {
+    display: block;
+    margin-bottom: .4rem;
+    font-weight: 500;
+    color: #333;
+    font-size: .95rem;
+}
+
+/* SELECT */
+.steps .section select {
+    width: 100%;
+    padding: .75rem 1rem;
+    font-size: .95rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background: #fafafa;
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23666%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20128c3.6%203.6%209.3%203.6%2012.9%200l128-128c3.6-3.6%203.6-9.3%200-12.9z%22%2F%3E%3C%2Fsvg%3E");
+    background-repeat: no-repeat;
+    background-position: right .8rem center;
+    background-size: 12px;
+}
+
+/* RANGE SLIDERS */
+.steps .section input[type="range"] {
+    width: 100%;
+    height: 36px;
+    -webkit-appearance: none;
+    appearance: none;
+    background: transparent;
+    margin: .5rem 0;
+}
+
+/* Track */
+input[type="range"]::-webkit-slider-runnable-track {
+    height: 6px;
+    background: #e0e0e0;
+    border-radius: 3px;
+}
+
+input[type="range"]::-moz-range-track {
+    height: 6px;
+    background: #e0e0e0;
+    border-radius: 3px;
+}
+
+/* Thumb */
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    background: #1976d2;
+    border-radius: 50%;
+    cursor: pointer;
+    margin-top: -7px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, .2);
+}
+
+input[type="range"]::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    background: #1976d2;
+    border-radius: 50%;
+    cursor: pointer;
+    border: none;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, .2);
+}
+
+/* Value display (added by JS) */
+.value-display {
+    color: #1976d2;
+    font-weight: 600;
+    margin-left: .4rem;
+}
+
+/* ────────────────────────────────────────────────────────────────
+   Navigation buttons
+   ──────────────────────────────────────────────────────────────── */
+.navigation_buttons {
+    margin-top: 1.5rem;
+    text-align: center;
+}
+
+.navigation_buttons .container {
+    display: flex;
+    gap: .75rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.navigation_buttons button {
+    min-width: 110px;
+    padding: .65rem 1.2rem;
+    font-size: .95rem;
+    font-weight: 500;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all .2s ease;
+}
+
+.navigation_buttons .next_step,
+.navigation_buttons .suggest_step {
+    background: #1976d2;
+    color: #fff;
+}
+
+.navigation_buttons .prev_step,
+.navigation_buttons .reset_step {
+    background: #e0e0e0;
+    color: #333;
+}
+
+.navigation_buttons button:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, .15);
+}
+
+.navigation_buttons .suggest_step:hover {
+    background: #1565c0;
+}
+
+/* Responsive */
+@media (max-width: 560px) {
+    container {
+        margin: 1rem;
+        padding: 1rem;
+    }
+
+    .navigation_buttons .container {
+        gap: .5rem;
+    }
+
+    .navigation_buttons button {
+        min-width: 90px;
+        font-size: .9rem;
+    }
+}
+
+/* ────────────────────────────────────────────────────────────────
+   RESULTS SECTION
+   ──────────────────────────────────────────────────────────────── */
+.results {
+    margin-top: 2rem;
+    padding: 1.5rem;
+    background: #f8fafc;
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, .06);
+    font-family: 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+}
+
+/* Calculation Summary */
+.results>div[style*="background:#f0f8ff"] {
+    background: #e3f2fd !important;
+    border-left: 5px solid #1976d2;
+    padding: 1rem 1.2rem;
+    margin: 0 0 1.5rem 0;
+    border-radius: 0 8px 8px 0;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #1a3e72;
+}
+
+.results>div[style*="background:#f0f8ff"] strong {
+    color: #0d47a1;
+}
+
+/* Results Title */
+.results h4 {
+    margin: 0 0 1rem;
+    font-weight: 600;
+    color: #1565c0;
+    font-size: 1.3rem;
+    border-bottom: 2px solid #bbdefb;
+    padding-bottom: .4rem;
+}
+
+/* Result Cards */
+.results ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: .2rem;
+}
+
+.results li {
+    background: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    padding: .2rem;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, .05);
+}
+
+.results li:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, .1);
+    border-color: #90caf9;
+}
+
+.results li strong {
+    color: #1976d2;
+    font-size: 1.1rem;
+}
+
+.results li br+* {
+    margin-top: .4rem;
+}
+
+/* No results message */
+.results p[color="#c00"],
+.results p[style*="color:#c00"] {
+    background: #ffebee;
+    color: #c62828;
+    padding: .9rem 1.2rem;
+    border-radius: 8px;
+    font-weight: 500;
+    text-align: center;
+    border: 1px solid #ffcdd2;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+    .results {
+        padding: 1rem;
+        margin: 1rem;
+    }
+
+    .results li {
+        padding: 1rem;
+    }
+}
