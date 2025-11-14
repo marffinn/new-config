@@ -2,6 +2,7 @@
 import { c_modele } from './data.js';
 
 const $podlozeSelect = $('[data-name="c_podloze"] select');
+const $izolacjaTypSelect = $('[data-name="typ_izolacji"] select'); // <-- NEW
 const $zaslepkaInput = $('[data-name="montaz_z_zaslepka"] input');
 const $izolacjaInput = $('[data-name="grubosc_izolacji"] input');
 const $klejInput = $('[data-name="grubosc_warstwy_kleju"] input');
@@ -24,6 +25,7 @@ function updateValues() {
 
 function filtruj_modele() {
     const category = $podlozeSelect.val();
+    const izolacjaTyp = $izolacjaTypSelect.val(); // <-- NEW
     const grubZaslepka = parseInt($zaslepkaInput.val(), 10) || 0;
     const grubIzolacji = parseInt($izolacjaInput.val(), 10) || 0;
     const grubKlej = parseInt($klejInput.val(), 10) || 0;
@@ -38,20 +40,23 @@ function filtruj_modele() {
     const validModels = c_modele.filter(m => m.categories.includes(category));
     const suggestions = [];
 
-    // Build calculation summary
     let summaryHtml = `
-        <div style="background:#f0f8ff; padding:1rem; border-left:4px solid #007bff; margin:1rem 0; font-family:monospace; font-size:0.95rem;">
+        <div style="background:#f0f8ff; padding:.6rem .8rem; border-left:3px solid #1976d2; margin:0 0 .8rem 0; border-radius:0 6px 6px 0; font-size:.8rem; color:#0d47a1;">
             <strong>Obliczenia:</strong><br>
             • Podłoże: <strong>${podlozeLabel}</strong><br>
-            • Grubość izolacji: <strong>${grubIzolacji} mm</strong><br>
-            • Warstwa kleju i tynku: <strong>${grubKlej} mm</strong><br>
+            • Izolacja: <strong>${grubIzolacji} mm</strong> 
+              (${izolacjaTyp === 'MW' ? 'Wełna mineralna → tylko z trzpieniem metalowym' : 'Styropian'})<br>
+            • Klej + tynk: <strong>${grubKlej} mm</strong><br>
             • Zaślepka: <strong>${grubZaslepka} mm</strong><br>
-            <hr style="border:0; border-top:1px dashed #aaa; margin:0.5rem 0;">
+            <hr style="display:none;">
     `;
 
     validModels.forEach(model => {
         const hef = model.hef[category];
         if (hef === undefined) return;
+
+        // CRITICAL: Only allow models with metal pin if MW is selected
+        if (izolacjaTyp === 'MW' && !model.hasMetalPin) return;
 
         const required = grubIzolacji + grubKlej + hef - grubZaslepka;
         const available = model.availableLengths
@@ -61,7 +66,6 @@ function filtruj_modele() {
         if (available) {
             suggestions.push({ name: model.name, hef, required, length: available, pdf: model.pdfLink });
 
-            // Add per-model calc line
             summaryHtml += `• <strong>${model.name}</strong>: ${grubIzolacji} + ${grubKlej} + ${hef} − ${grubZaslepka} = <strong>${required} mm</strong> → <strong>${available} mm</strong><br>`;
         }
     });
@@ -73,18 +77,16 @@ function filtruj_modele() {
         return;
     }
 
-    // Final results
-    let resultsHtml = '<h4 style="margin-top:1.5rem;">Zalecane modele:</h4><ul style="padding:0; list-style:none;">';
+    let resultsHtml = '<h4 style="margin:0 0 .6rem; font-size:1rem; color:#1565c0; font-weight:600; border-bottom:1px solid #bbdefb; padding-bottom:.2rem;">Zalecane modele:</h4><ul style="padding:0; margin:0; display:grid; gap:.6rem;">';
     suggestions.forEach(s => {
         resultsHtml += `
-            <li style="margin:1rem 0; padding:1rem; border:1px solid #ddd; border-radius:6px; background:#f9f9f9;">
-                <strong>${s.name}</strong><br>
-                hef = ${s.hef} mm → wymagana długość: <strong>${s.required} mm</strong> → <strong>${s.length} mm</strong>
+            <li style="background:#fff; border:1px solid #e0e0e0; border-radius:8px; padding:.7rem .9rem; font-size:.85rem; line-height:1.4; box-shadow:0 1px 3px rgba(0,0,0,.06);">
+                <strong style="color:#1976d2; font-size:.9rem;">${s.name}</strong><br>
+                hef = ${s.hef} mm → wymagana: <strong>${s.required} mm</strong> → <strong>${s.length} mm</strong>
             </li>`;
     });
     resultsHtml += '</ul>';
 
-    // Combine: summary + results
     $results.html(summaryHtml + resultsHtml);
 }
 
