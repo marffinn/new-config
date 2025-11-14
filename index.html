@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pl">
 
 <head>
     <meta charset="UTF-8">
@@ -10,57 +10,56 @@
 </head>
 
 <body>
-    <container>
-        <h3>KONFIGIURATOR</h3>
-        <div class="steps">
-            <div class="section" data-name="c_podloze">
-                <select>
-                    <option value="A">Beton zwykły (C12/15 do C50/60)</option>
-                    <option value="B">Cegła pełna (ceramiczna/silikatowa)</option>
-                    <option value="C">Cegła perforowana/kanałowa (Porotherm 25, 17 mm)</option>
-                    <option value="D">Beton na kruszywie lekkim (LAC)(Pełny bez otworów)</option>
-                    <option value="E" selected>Beton komórkowy (AAC)</option>
-                </select>
-            </div>
-            <div class="section" data-name="typ_izolacji">
-                <select>
-                    <option value="EPS" selected>Styropian (EPS/XPS)</option>
-                    <option value="MW">Wełna mineralna</option>
-                </select>
-            </div>
-            <div class="section" data-name="montaz_z_zaslepka">
-                <label for="c_zaslepka">Montaż z zaślepką</label>
-                <input type="range" id="c_zaslepka" name="c_zaslepka" min="0" max="160" value="20" step="20" />
-            </div>
-            <div class="section" data-name="grubosc_izolacji">
-                <label for="c_grubosc_izolacji">Grubość izolacji</label>
-                <input type="range" id="c_grubosc_izolacji" name="c_grubosc_izolacji" min="10" max="400" value="90"
-                    step="10" />
-            </div>
-            <div class="section" data-name="grubosc_warstwy_kleju">
-                <label for="c_grubosc_warstwy_kleju">Grubość warstwy kleju i tynku</label>
-                <input type="range" id="c_grubosc_warstwy_kleju" name="c_grubosc_warstwy_kleju" min="10" max="50"
-                    value="20" step="10" />
-            </div>
-
-
-
-            <div class="navigation_buttons">
-                <div class="container">
-                    <button class="next_step">Dalej</button>
-                    <button class="prev_step">Cofnij</button>
-                    <button class="suggest_step">Pokaż sugestie</button>
-                    <button class="reset_step" hidden>Zacznij od nowa</button>
+    <div class="app-container">
+        <!-- LEFT: CONFIGURATOR -->
+        <container class="config-panel">
+            <h3>KONFIGIURATOR</h3>
+            <div class="steps">
+                <div class="section" data-name="c_podloze">
+                    <select>
+                        <option value="A">Beton zwykły</option>
+                        <option value="B">Cegła pełna</option>
+                        <option value="C">Cegła perforowana</option>
+                        <option value="D">Beton LAC</option>
+                        <option value="E" selected>Beton komórkowy</option>
+                    </select>
+                </div>
+                <div class="section" data-name="typ_izolacji">
+                    <select>
+                        <option value="EPS" selected>Styropian</option>
+                        <option value="MW">Wełna</option>
+                    </select>
+                </div>
+                <div class="section" data-name="montaz_z_zaslepka">
+                    <label for="c_zaslepka">Zaślepka</label>
+                    <input type="range" id="c_zaslepka" min="0" max="160" value="20" step="20">
+                </div>
+                <div class="section" data-name="grubosc_izolacji">
+                    <label for="c_grubosc_izolacji">Izolacja</label>
+                    <input type="range" id="c_grubosc_izolacji" min="10" max="400" value="90" step="10">
+                </div>
+                <div class="section" data-name="grubosc_warstwy_kleju">
+                    <label for="c_grubosc_warstwy_kleju">Klej + tynk</label>
+                    <input type="range" id="c_grubosc_warstwy_kleju" min="0" max="50" value="20" step="10">
+                </div>
+                <div class="navigation_buttons">
+                    <div class="container">
+                        <button class="suggest_step">Pokaż sugestie</button>
+                        <button class="reset_step" hidden>Zacznij od nowa</button>
+                    </div>
                 </div>
             </div>
-        </div>
-    </container>
-    <div class="results">
+        </container>
 
+        <!-- RIGHT: CALC + RESULTS -->
+        <div class="output-panel">
+            <div class="calculation"></div>
+            <div class="results"></div>
+        </div>
     </div>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script type="module" src="./main.js"></script>
 </body>
-<script src="https://code.jquery.com/jquery-3.7.1.min.js"
-    integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
-<script type="module" src="./main.js"></script>
 
 </html>
