@@ -3,7 +3,7 @@ export const c_modele = [
     {
         name: 'LDK TZ',
         hef: { A: 25, B: 80, C: 80, D: 80, E: 80 },
-        offset: -10,
+        offset: -10, // reguła, która odejmuje zadaną wartość
         categories: ['A', 'B', 'C', 'D', 'E'],
         availableLengths: [100, 120, 140, 160, 180, 200, 220, 240, 260, 280, 300, 340, 380, 420],
         material: 'polipropylen',
@@ -13,7 +13,7 @@ export const c_modele = [
     {
         name: 'LDK TN',
         hef: { A: 25, B: 80, C: 80, D: 80, E: 80 },
-        offset: -10,
+        offset: -10, // reguła, która odejmuje zadaną wartość
         categories: ['A', 'B', 'C', 'D', 'E'],
         availableLengths: [100, 120, 140, 160, 180, 200, 220, 240, 260, 280, 300],
         material: 'polipropylen',
